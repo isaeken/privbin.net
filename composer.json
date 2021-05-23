@@ -1,0 +1,101 @@
+{
+    "name": "privbin/privbin",
+    "type": "project",
+    "version": "2.0",
+    "description": "The Privbin Project.",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "homepage": "https://privbin.net",
+    "keywords": [
+        "privbin",
+        "code-editor",
+        "workspaces",
+        "notepad"
+    ],
+    "authors": [
+        {
+            "role": "Founder",
+            "name": "Isa Eken",
+            "email": "hello@isaeken.com.tr",
+            "homepage": "https://www.isaeken.com.tr"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "actb/blade-github-octicons": "^3.0",
+        "andreiio/blade-remix-icon": "^1.0",
+        "appstract/laravel-blade-directives": "^1.11",
+        "bensampo/laravel-enum": "^3.3",
+        "blade-ui-kit/blade-heroicons": "^1.2",
+        "blade-ui-kit/blade-icons": "^1.0",
+        "blade-ui-kit/blade-ui-kit": "^0.2.0",
+        "brunocfalcao/blade-feather-icons": "^2.0",
+        "codeat3/blade-google-material-design-icons": "^1.1",
+        "codeat3/blade-phosphor-icons": "^1.1",
+        "codeat3/blade-simple-icons": "^1.6",
+        "davidhsianturi/blade-bootstrap-icons": "^1.0",
+        "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "khatabwedaa/blade-css-icons": "^1.0",
+        "laravel/framework": "^8.40",
+        "laravel/jetstream": "^2.3",
+        "laravel/sanctum": "^2.6",
+        "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.0",
+        "owenvoke/blade-fontawesome": "^1.9",
+        "ryangjchandler/blade-tabler-icons": "^1.1",
+        "spatie/color": "^1.2",
+        "spatie/laravel-settings": "^2.1"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.5",
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "itsgoingd/clockwork": "^5.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "@composer run post-autoload-dump",
+            "@composer run post-root-package-install",
+            "@composer run post-create-project-cmd"
+        ]
+    }
+}
